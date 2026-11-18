@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  </head>
+  <body>
+    <div class="sidebar"> 
+      <div class="logo">   <a href="index.html">
+      <i class="fas fa-desktop"></i>
+      <div class="logo_name"> EAST</div>
+      </a>
+      </div>
+
+  <i class="fas fa-bars" id="bars"></i>
+      
+    <ul class="menu">
+      <li>
+        <a href="inventory.html"><i class="fas fa-box"></i> 
+        <span class="Inventory"> Inventory</span> </a>
+        <span class="tool">Inventory</span>
+      </li>  
+    
+      <li>
+        <a href="logsheet.html"><i class="fas fa-clipboard-list"></i>
+      <span class="logsheet"> Logsheet</span></a>
+        <span class="tool">Logsheet</span>
+      </li>
+      
+      <li>
+        <a href="contact.html"><i class="fas fa-address-book"></i><span class="contact"> Contact Us</span></a>
+        <span class="tool">Contact Us</span>
+      </li>
+    </ul>
+  </div>
+      
+       <div class="home"> 
+        <div class="text"> LOGSHEET
+          <p class="note"> Data is saved in this device or browser only. </p>
+        </div>
+
+        <section class="panel">
+          <h2>Log in</h2>
+          <div class="grid">
+            <div>
+              <label for="lt">Log sheet</label>
+              <select id="lt">
+                <option value="individual">Individual</option>
+                <option value="group">Group</option>
+              </select>
+            </div>
+            <div>
+              <label for="nm" id="nml">Name</label>
+              <input id="nm" autocomplete="name">
+            </div>
+            <div>
+              <label for="sc">Section</label>
+              <input id="sc" placeholder="e.g. STEM 12 - A">
+            </div>
+            <div>
+              <label for="eq">Equipment used</label>
+              <select id="eq"></select>
+            </div>
+            <div>
+              <label for="qt">Quantity</label>
+              <input id="qt" type="number" min="1" value="1">
+            </div>
+          </div>
+          <div class="row">
+            <button id="logBtn" type="button">Log equipment out</button>
+          </div>
+          <div class="err" id="msg" role="alert"></div>
+        </section>
+
+        <section class="panel" id="ret" hidden>
+          <h2 id="retT">Log after use</h2>
+          <div class="grid">
+            <div>
+              <label for="rg">Returned in good condition</label>
+              <input id="rg" type="number" min="0" value="0">
+            </div>
+            <div>
+              <label for="rb">Returned broken</label>
+              <input id="rb" type="number" min="0" value="0">
+            </div>
+            <div>
+              <label for="rm">Remarks (optional)</label>
+              <input id="rm">
+            </div>
+          </div>
+          <div class="row">
+            <button id="retBtn" type="button">Save after-use log</button>
+            <button class="alt" id="cancel" type="button">Cancel</button>
+          </div>
+          <div class="err" id="msg2" role="alert"></div>
+        </section>
+
+        <section class="panel">
+          <h2>Individual log sheet</h2>
+          <div class="scroll">
+            <table class="sheet">
+              <thead>
+                <tr>
+                  <th rowspan="2">Name</th>
+                  <th rowspan="2">Section</th>
+                  <th colspan="2">Date and Time Logged-In</th>
+                  <th rowspan="2">Equipment Used</th>
+                  <th colspan="2">Date and Time After Use</th>
+                  <th rowspan="2">Remarks</th>
+                </tr>
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody id="logI"></tbody>
+            </table>
+          </div>
+          <p class="note">Note: Per individual use of equipments</p>
+        </section>
+
+        <section class="panel">
+          <h2>Group log sheet</h2>
+          <div class="scroll">
+            <table class="sheet">
+              <thead>
+                <tr>
+                  <th rowspan="2">Group Name</th>
+                  <th rowspan="2">Section</th>
+                  <th colspan="2">Date and Time Logged-In</th>
+                  <th rowspan="2">Equipment Used</th>
+                  <th colspan="2">Date and Time After Use</th>
+                  <th rowspan="2">Remarks</th>
+                </tr>
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody id="logG"></tbody>
+            </table>
+          </div>
+          <p class="note">Note: Per group use of equipments</p>
+        </section>
+
+            <section class="panel" id="lsr-report">
+             <h2>Daily report</h2>
+              <div class="lsr-bar">
+               <input type="date" id="lsr-date">
+             <button id="lsr-gen" type="button">Generate report</button>
+            <button id="lsr-print" type="button">Print / Save as PDF</button>
+          </div>
+          <div id="lsr-output"></div>
+        </section>
+         </div>
+
+        <script>
+let btn = document.querySelector("#bars");
+     let sidebar = document.querySelector(".sidebar");
+
+      btn.onclick= function () {
+        sidebar.classList.toggle ("active");} 
+        </script>
+
+        <script src="shared.js"></script>
+        <script src="equipment.js"></script>
+        <script src="logsheet.js"></script>
+
+  </body>
+</html>
